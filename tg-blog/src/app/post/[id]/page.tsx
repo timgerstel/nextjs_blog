@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { MenuBar } from 'app/page';
+import MenuBar from '../../menubar';
 import Link from 'next/link';
 import { remark } from 'remark';
 import html from 'remark-html';
