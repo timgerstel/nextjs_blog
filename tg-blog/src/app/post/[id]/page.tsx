@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { MenuBar } from 'app/page';
 import Link from 'next/link';
 import { remark } from 'remark';
 import html from 'remark-html';
@@ -29,21 +30,18 @@ export default async function Page({ params }: {params: Promise<{id: string}>}) 
 
   return (<>
     <div className="tg-app-main-container w-full text-[#444444]">
-        <div className="w-full h-[50px] border-b border-dashed border-[rgb(0,0,0,0.2)]">
-          <div className="flex items-center gap-10
-            h-full ml-40 mr-40 pl-10 pr-10
-            border-l border-r border-dashed border-[rgb(0,0,0,0.2)]
-          font-bold">
-            <Link href="/">Timothy Gerstel</Link>
-            <a href="https://github.com/timgerstel">GitHub</a>
-            <a href="https://www.linkedin.com/in/timgerstel/">LinkedIn</a>
-          </div>
+      <MenuBar />
+      <main className="flex justify-center
+      h-[calc(100vh-50px)]
+      ml-10 sm:ml-20 md:ml-30 lg:ml-40
+      mr-10 sm:mr-20 md:mr-30 lg:mr-40
+      border-l border-r border-dashed border-[rgb(0,0,0,0.2)] overflow-hidden">
+        <div className='w-full
+        shadow-[0_3px_10px_rgb(0,0,0,0.2)]
+        m-6 p-4' >
+          <article className='prose w-full' dangerouslySetInnerHTML={{ __html: contentHtml }} />
         </div>
-        <main className="flex justify-center h-screen ml-40 mr-40 border-l border-r border-dashed border-[rgb(0,0,0,0.2)]">
-          <div className='w-full p-10'>
-            <article className='prose w-full' dangerouslySetInnerHTML={{ __html: contentHtml }} />
-          </div>
-        </main>
-      </div>
+      </main>
+    </div>
   </>)
 }
