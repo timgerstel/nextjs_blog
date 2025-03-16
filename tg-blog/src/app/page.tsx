@@ -2,51 +2,34 @@
 import Link from 'next/link'
 import MenuBar from './menubar';
 import { Meteors } from '@/components/ui/meteors';
+import { DataTable } from '@/components/ui/data-table';
+import { columns } from '@/components/ui/data-table.d';
+import { Boxes } from '@/components/ui/background-boxes';
+import Fireworks from "react-canvas-confetti/dist/presets/fireworks";
 
-function BlogPost(props: any){
+function MeteorCard(props: any){
   return (
-    <Link href={`/post/${props.url}`}>
-      <div className="mt-10">
+    <div className="mt-10">
       <div className=" w-[275px] sm:w-[375px] md:w-[450px] lg:w-[500px] relative max-w-xs">
         <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl" />
-        <div className="relative shadow-xl bg-gray-900 border border-gray-800  px-4 py-5 h-full overflow-hidden rounded-xl flex flex-col justify-end items-start">
-          {/* <div className="h-5 w-5 rounded-full border flex items-center justify-center mb-4 border-gray-500">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="h-2 w-2 text-gray-300"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4.5 4.5l15 15m0 0V8.25m0 11.25H8.25"
-              />
-            </svg>
-          </div> */}
- 
-          <div className="font-bold text-xs text-white w-full flex justify-between whitespace-nowrap mb-5">
-              <span className="">{props.title}</span>
-              <span className="">{props.date}</span>
-          </div>
+          <div className="relative shadow-xl bg-gray-100 dark:bg-gray-900 border border-gray-50 dark:border-gray-800  px-4 py-5 h-full overflow-hidden rounded-xl flex flex-col justify-end items-start">
+  
+            <h2 className="font-extrabold text-xl pb-5">{props.title}</h2>
 
- 
-          <p className="font-normal text-xs text-slate-500 mb-4 relative z-50">
-            {props.description}
-          </p>
- 
-          <button className="border px-3 py-1 rounded-lg  border-gray-500 text-gray-300 text-xs">
-            Read
-          </button>
- 
-          {/* Meaty part - Meteor effect */}
-          <Meteors number={20} />
-        </div>
+  
+            <p className="font-normal text-xs text-slate-800 dark:text-slate-300 mb-4 relative z-50">
+              {props.desc}
+            </p>
+  
+            <button className="border px-3 py-1 rounded-lg  border-gray-500 text-slate-700 dark:text-gray-300 text-xs hover:bg-slate-700">
+              tru 👍
+            </button>
+  
+            {/* Meaty part - Meteor effect */}
+            <Meteors number={20} />
+          </div>
       </div>
     </div>
-    </Link>
   )
 }
 
@@ -63,29 +46,55 @@ export default async function Home() {
     return (
       <div className="tg-app-main-container w-full font-(family-name:--Inter)">
         <MenuBar />
-        <main className="flex justify-center
-        h-[calc(100vh-50px)]
+        <main className="flex flex-col items-center
+        h-[calc(100vh)]
         ml-5 md:ml-10
         mr-5 md:mr-10
         border-l border-r border-dashed border-[rgba(0,132,255,0.1)]
-        overflow-scroll">
-          <div className="">
-            {postTitles.map((post: any, ind: any) => {
+        overflow-hidden z-10">
+          <div className="w-full 
+            pl-5 md:pl-10
+            pr-5 md:pr-10
+          absolute flex flex-col items-center overflow-hidden z-30">
+            <DataTable columns={columns} data={postTitles.map((post: any, ind: any) => {
               const parts = post.split("---");
-              return <div key={`div-${ind}`} className='pb-10'>
-                <BlogPost key={ind} date={parts[0]} title={parts[1]} description={parts[2]} url={encodeURIComponent(post)} />
-                {/* <BlogPost key={ind+1} date={parts[0]} title={parts[1]} description={parts[2]} url={encodeURIComponent(post)} />
-                <BlogPost key={ind+2} date={parts[0]} title={parts[1]} description={parts[2]} url={encodeURIComponent(post)} />
-                <BlogPost key={ind+3} date={parts[0]} title={parts[1]} description={parts[2]} url={encodeURIComponent(post)} /> */}
-
-              </div>
-            })
-            }
+              return {id: ind, title: parts[1], desc: parts[2], date: parts[0], url: encodeURIComponent(post)}
+            })}/>
           </div>
+
+          <div className="h-[1200px] md:h-[700px] absolute w-full top-[650px]
+            overflow-hidden">
+              <div className="dark:bg-[rgba(0,0,0,0.03)]
+              h-[1200px] md:h-[700px]
+              ml-5 md:ml-10
+              mr-5 md:mr-10
+              bg-white  dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex flex-col items-center justify-center -z-10" />
+            <div className="absolute inset-0 w-full
+            h-full dark:bg-[rgba(0,0,0,0.03)] bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] pointer-events-none" />
+      
+            {/* <Boxes className="sm:hidden md:hidden lg:hidden xl:hidden 2xl:flex"/> */}
+          </div>
+          
+          <div className="flex flex-col items-center absolute top-[750px]">
+            <h1 className="text-3xl font-extrabold -z-10">Loved by peers.</h1>
+            <div className="flex flex-col sm:flex-row">
+              <div className="flex flex-col py-5 px-5">
+                <MeteorCard title="Architect" desc="Did someone gave Stevie Wonder a regular computer keyboard?" />
+                <MeteorCard title="Test Engineer" desc="Idt he knows what a unit test is lmao." />
+              </div>
+              <div className="flex flex-col px-5">
+                <MeteorCard title="Manager" desc="this guy sucks" />
+                <MeteorCard title="Scrum Master" desc="It's a miracle he remembers to breathe, honestly." />
+              </div>
+            </div>
+          </div>
+
+          
         </main>
       </div>
     );
   } catch(e) {
+    console.log('error', e);
     return (
       <div className="tg-app-main-container w-full font-(family-name:--Inter)">
         <MenuBar />
@@ -95,8 +104,7 @@ export default async function Home() {
         mr-5 md:mr-10
         border-l border-r border-dashed border-[rgba(0,132,255,0.1)]
         overflow-scroll">
-          <div className="flex animate-pulse space-x-4">
-            <div className="size-10 rounded-full bg-gray-200"></div>
+          <div className="flex animate-pulse space-x-4 py-5">
             <div className="flex-1 space-y-6 py-1">
               <div className="space-y-3">
                 <div className="grid grid-cols-3 gap-4">
@@ -108,8 +116,7 @@ export default async function Home() {
             </div>
           </div>
 
-          <div className="flex animate-pulse space-x-4">
-            <div className="size-10 rounded-full bg-gray-200"></div>
+          <div className="flex animate-pulse space-x-4 py-5">
             <div className="flex-1 space-y-6 py-1">
               <div className="space-y-3">
                 <div className="grid grid-cols-3 gap-4">
@@ -121,8 +128,7 @@ export default async function Home() {
             </div>
           </div>
 
-          <div className="flex animate-pulse space-x-4">
-            <div className="size-10 rounded-full bg-gray-200"></div>
+          <div className="flex animate-pulse space-x-4 py-5">
             <div className="flex-1 space-y-6 py-1">
               <div className="space-y-3">
                 <div className="grid grid-cols-3 gap-4">
