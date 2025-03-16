@@ -33,9 +33,9 @@ export default async function Page({ params }: {params: Promise<{id: string}>}) 
       <MenuBar />
       <main className="flex justify-center
       h-[calc(100vh-50px)]
-      ml-10 sm:ml-20 md:ml-30 lg:ml-40
-      mr-10 sm:mr-20 md:mr-30 lg:mr-40
-      border-l border-r border-dashed border-[rgb(0,0,0,0.2)] overflow-hidden">
+      ml-5 md:ml-10
+      mr-5 md:mr-10
+      border-l border-r border-dashed border-[rgba(0,132,255,0.1)] overflow-hidden">
         <div className='w-full
         shadow-[0_3px_10px_rgb(0,0,0,0.2)]
         m-6 p-4' >
