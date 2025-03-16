@@ -1,6 +1,11 @@
+"use client"
+
+import Switcher13 from "@/components/ui/switcher13";
 import Link from "next/link";
 
 export default function MenuBar(){
+  
+
   return (<div className="w-full h-[50px] border-b border-dashed border-[rgba(0,132,255,0.1)]">
     <div className="flex items-center gap-2 md:gap-3
       whitespace-nowrap
@@ -13,6 +18,9 @@ export default function MenuBar(){
       <Link href="/">Timothy Gerstel</Link>
       <a href="https://github.com/timgerstel">GitHub</a>
       <a href="https://www.linkedin.com/in/timgerstel/">LinkedIn</a>
+      <div className="ml-auto">
+        <Switcher13 />
+      </div>
     </div>
   </div>)
 }

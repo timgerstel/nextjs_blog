@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider"
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -28,11 +29,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.className}`}>
+    <html lang="en" className={`${inter.className}`} suppressHydrationWarning>
       <body
         className={`${inter.className} antialiased`}
+        suppressHydrationWarning
       >
-        {children}
+        <ThemeProvider
+            attribute="data-theme"
+            defaultTheme="dark"
+            enableSystem={false}
+            disableTransitionOnChange
+          >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

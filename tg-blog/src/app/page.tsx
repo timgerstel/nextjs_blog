@@ -46,31 +46,6 @@ function BlogPost(props: any){
         </div>
       </div>
     </div>
-
-      {/* This looks cool but its pretty useless for a blog post card */}
-      {/* <TextRevealCard
-          text="You know the business"
-          revealText="I know the chemistry "
-        >
-          <TextRevealCardTitle>
-          <div className="flex justify-between whitespace-nowrap">
-              <span className="p-3">{props.title}</span>
-              <span className="p-3">{props.date}</span>
-          </div>
-          </TextRevealCardTitle>
-          <TextRevealCardDescription>
-            {props.description}
-          </TextRevealCardDescription>
-      </TextRevealCard> */}
-      
-      {/* Orignal somewhat bland design */}
-      {/* <div className='shadow-[rgba(0,_0,_0,_0.15)_0px_3px_8px] rounded-xs
-      w-[275px] sm:w-[375px] md:w-[450px] lg:w-[500px]
-      cursor-pointer whitespace-nowrap mb-10
-      '>
-
-        <div className="p-3">{props.description}</div>
-      </div> */}
     </Link>
   )
 }
@@ -86,7 +61,7 @@ export default async function Home() {
     const postTitles = posts.map((item: any) => item.path);
 
     return (
-      <div className="tg-app-main-container w-full text-[#444444] font-(family-name:--Inter)">
+      <div className="tg-app-main-container w-full font-(family-name:--Inter)">
         <MenuBar />
         <main className="flex justify-center
         h-[calc(100vh-50px)]
@@ -99,9 +74,9 @@ export default async function Home() {
               const parts = post.split("---");
               return <div key={`div-${ind}`} className='pb-10'>
                 <BlogPost key={ind} date={parts[0]} title={parts[1]} description={parts[2]} url={encodeURIComponent(post)} />
-                <BlogPost key={ind} date={parts[0]} title={parts[1]} description={parts[2]} url={encodeURIComponent(post)} />
-                <BlogPost key={ind} date={parts[0]} title={parts[1]} description={parts[2]} url={encodeURIComponent(post)} />
-                <BlogPost key={ind} date={parts[0]} title={parts[1]} description={parts[2]} url={encodeURIComponent(post)} />
+                {/* <BlogPost key={ind+1} date={parts[0]} title={parts[1]} description={parts[2]} url={encodeURIComponent(post)} />
+                <BlogPost key={ind+2} date={parts[0]} title={parts[1]} description={parts[2]} url={encodeURIComponent(post)} />
+                <BlogPost key={ind+3} date={parts[0]} title={parts[1]} description={parts[2]} url={encodeURIComponent(post)} /> */}
 
               </div>
             })
@@ -112,21 +87,54 @@ export default async function Home() {
     );
   } catch(e) {
     return (
-      <>
-      <div className="flex animate-pulse space-x-4">
-        <div className="size-10 rounded-full bg-gray-200"></div>
-        <div className="flex-1 space-y-6 py-1">
-          <div className="h-2 rounded bg-gray-200"></div>
-          <div className="space-y-3">
-            <div className="grid grid-cols-3 gap-4">
-              <div className="col-span-2 h-2 rounded bg-gray-200"></div>
-              <div className="col-span-1 h-2 rounded bg-gray-200"></div>
+      <div className="tg-app-main-container w-full font-(family-name:--Inter)">
+        <MenuBar />
+        <main className="flex flex-col justify-center
+        h-[calc(100vh-50px)]
+        ml-5 md:ml-10
+        mr-5 md:mr-10
+        border-l border-r border-dashed border-[rgba(0,132,255,0.1)]
+        overflow-scroll">
+          <div className="flex animate-pulse space-x-4">
+            <div className="size-10 rounded-full bg-gray-200"></div>
+            <div className="flex-1 space-y-6 py-1">
+              <div className="space-y-3">
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="col-span-2 h-2 rounded bg-gray-200"></div>
+                  <div className="col-span-1 h-2 rounded bg-gray-200"></div>
+                </div>
+                <div className="h-2 rounded bg-gray-200"></div>
+              </div>
             </div>
-            <div className="h-2 rounded bg-gray-200"></div>
           </div>
-        </div>
+
+          <div className="flex animate-pulse space-x-4">
+            <div className="size-10 rounded-full bg-gray-200"></div>
+            <div className="flex-1 space-y-6 py-1">
+              <div className="space-y-3">
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="col-span-2 h-2 rounded bg-gray-200"></div>
+                  <div className="col-span-1 h-2 rounded bg-gray-200"></div>
+                </div>
+                <div className="h-2 rounded bg-gray-200"></div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex animate-pulse space-x-4">
+            <div className="size-10 rounded-full bg-gray-200"></div>
+            <div className="flex-1 space-y-6 py-1">
+              <div className="space-y-3">
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="col-span-2 h-2 rounded bg-gray-200"></div>
+                  <div className="col-span-1 h-2 rounded bg-gray-200"></div>
+                </div>
+                <div className="h-2 rounded bg-gray-200"></div>
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
-      </>
     )
   }
 }
