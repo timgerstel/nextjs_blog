@@ -40,7 +40,7 @@ export default async function Page({ params }: {params: Promise<{id: string}>}) 
         <div className='w-full
         shadow-[0_3px_10px_rgb(0,0,0,0.2)]
         dark:shadow-[0_3px_10px_#ffffff10]
-        m-6 p-4'>
+        p-3 lg:m-6 lg:p-4'>
           <article className='prose dark:prose-invert w-full' dangerouslySetInnerHTML={{ __html: contentHtml }} />
         </div>
       </main>
