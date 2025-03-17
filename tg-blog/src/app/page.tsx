@@ -80,7 +80,7 @@ export default async function Home() {
           </div>
           
           <div className="flex flex-col items-center absolute top-[1300px]">
-            <h1 className="text-3xl font-extrabold -z-10 mb-10">Loved by peers.</h1>
+            <h1 className="text-3xl font-extrabold mb-10">Loved by peers.</h1>
             <div className="flex flex-col lg:flex-row">
               <div className="flex flex-col lg:pt-16 px-5">
                 <MeteorCard title="Architect" desc="Did someone give Stevie Wonder a regular computer keyboard?" />

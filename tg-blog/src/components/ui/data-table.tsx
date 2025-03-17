@@ -75,6 +75,7 @@ export function DataTable<TData, TValue>({
           }
           className="max-w-sm"
         />
+        
         {/* <Input
           placeholder="Filter posts..."
           value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
