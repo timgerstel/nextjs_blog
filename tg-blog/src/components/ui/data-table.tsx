@@ -39,6 +39,10 @@ export function DataTable<TData, TValue>({
   }])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [globalFilter, setGlobalFilter] = useState<any>([]);
+  const [pagination, setPagination] = useState({
+    pageIndex: 0, //initial page index
+    pageSize: 20, //default page size
+  });
 
   const table = useReactTable({
     data,
@@ -51,10 +55,12 @@ export function DataTable<TData, TValue>({
     onColumnFiltersChange: setColumnFilters,
     onGlobalFilterChange: setGlobalFilter,
     getFilteredRowModel: getFilteredRowModel(),
+    onPaginationChange: setPagination,
     state: {
       sorting,
       columnFilters,
-      globalFilter
+      globalFilter,
+      pagination
     }
   })
 
@@ -78,11 +84,11 @@ export function DataTable<TData, TValue>({
           className="max-w-sm"
         /> */}
       </div>
-      <div className="rounded-md border dark:border-gray-400">
+      <div className="rounded-md border dark:border-gray-600">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id} className=" dark:border-b-gray-400">
+              <TableRow key={headerGroup.id} className=" dark:border-b-gray-600">
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id}>
@@ -104,7 +110,7 @@ export function DataTable<TData, TValue>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  className="cursor-pointer hover:bg-slate-300 dark:hover:bg-slate-700 dark:border-b-gray-400"
+                  className="cursor-pointer hover:bg-slate-300 dark:hover:bg-slate-700 dark:border-b-gray-600"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>

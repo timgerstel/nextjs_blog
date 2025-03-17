@@ -46,7 +46,7 @@ export const columns: ColumnDef<BlogPost>[] = [
     header: "Description",
     cell: ({ row }) => {
  
-      return <div className="whitespace-pre overflow-hidden text-ellipsis max-w-20 sm:max-w-48 md:max-w-72 lg:max-w-96 xl:max-w-none font-bold" onClick={() => redirect('/post/' + row.original.url)}>{row.getValue("desc")}</div>
+      return <div className="whitespace-pre overflow-hidden text-ellipsis max-w-48 md:max-w-72 lg:max-w-96 xl:max-w-none font-bold" onClick={() => redirect('/post/' + row.original.url)}>{row.getValue("desc")}</div>
     },
   },
   {
