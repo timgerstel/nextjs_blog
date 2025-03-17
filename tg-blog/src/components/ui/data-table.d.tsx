@@ -54,13 +54,15 @@ export const columns: ColumnDef<BlogPost>[] = [
     sortDescFirst: true,
     header: ({ column }) => {
       return (
-        <div className="text-right hover:bg-slate-400 dark:hover:bg-slate-700">
+        <div className="text-right">
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Date
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <div className=" hover:bg-slate-400 dark:hover:bg-slate-700 py-1 pr-2 rounded">
+            <ArrowUpDown className="ml-2 h-4 w-4" />
+          </div>
         </Button>
         </div>
       )
