@@ -74,7 +74,7 @@ export function DataTable<TData, TValue>({
             table.setGlobalFilter(String(event.target.value))
           }
           className="max-w-sm border-slate-200 dark:border-[#111014] bg-white dark:bg-[#1c1b22]
-           hover:border-slate-300 dark:hover:border-slate-700"
+           hover:border-slate-300 dark:hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-slate-300 dark:focus-visible:ring-slate-700"
         />
         
         {/* <Input
@@ -113,7 +113,7 @@ export function DataTable<TData, TValue>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  className="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700
+                  className="cursor-pointer hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] dark:hover:shadow-[0_3px_10px_rgba(255,255,255,0.15)]
                   border-b-slate-200 dark:border-b-gray-800"
                 >
                   {row.getVisibleCells().map((cell) => (
