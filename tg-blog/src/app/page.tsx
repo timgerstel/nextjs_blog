@@ -17,10 +17,9 @@ function MeteorCard(props: any){
             <h2 className="font-extrabold text-xl pb-5">{props.title}</h2>
 
   
-            <p className="font-normal text-xs text-slate-800 dark:text-slate-300 mb-4 relative z-50">
+            <p className="font-normal text-xs text-slate-800 dark:text-slate-300 mb-4 relative z-40">
               {props.desc}
             </p>
-  
             <button className="border px-3 py-1 rounded-lg  border-gray-500 text-slate-700 dark:text-gray-300 text-xs hover:bg-slate-300 dark:hover:bg-slate-700">
               tru 👍
             </button>
@@ -44,11 +43,12 @@ export default async function Home() {
     const postTitles = posts.map((item: any) => item.path);
 
     return (
-      <div className="tg-app-main-container w-full font-(family-name:--Inter)">
+      <div className="tg-app-main-container w-full font-(family-name:--Inter)
+        h-[2850px] lg:h-[2100px]">
         <MenuBar />
         <main className="flex flex-col items-center
-        h-[2800px] lg:h-[calc(100vh-50px)]
         ml-5 md:ml-10
+        h-full
         mr-5 md:mr-10
         border-l border-r border-dashed border-[rgba(0,132,255,0.1)]
         overflow-hidden z-10">
@@ -63,20 +63,18 @@ export default async function Home() {
             })}/>
           </div>
 
-          <div className="h-[1700px] lg:h-[900px] absolute w-full top-[1200px]
-            overflow-hidden">
-              <div className="dark:bg-[rgba(0,0,0,0.02)]
-              h-[1700px] lg:h-[900px]
+          <div className="h-[1700px] lg:h-[950px] absolute w-full top-[1200px]
+            overflow-hidden -z-10">
+              <div className="bg-transparent
+              h-[1700px] lg:h-[950px]
               ml-5 md:ml-10
               mr-5 md:mr-10
-              bg-white  dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex flex-col items-center justify-center -z-10" />
+              dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex flex-col items-center justify-center" />
             <div className="absolute inset-0 w-full" >
               <div className=" ml-5 md:ml-10
               mr-5 md:mr-10
-              h-full dark:bg-[rgba(0,0,0,0.02)] bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] pointer-events-none" />
+              h-full bg-slate-100 dark:bg-[#17161b] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] pointer-events-none" />
              </div>
-      
-            {/* <Boxes className="sm:hidden md:hidden lg:hidden xl:hidden 2xl:flex"/> */}
           </div>
           
           <div className="flex flex-col items-center absolute top-[1300px]">
