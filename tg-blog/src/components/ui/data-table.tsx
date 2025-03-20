@@ -73,7 +73,8 @@ export function DataTable<TData, TValue>({
           onChange={(event) =>
             table.setGlobalFilter(String(event.target.value))
           }
-          className="max-w-sm"
+          className="max-w-sm border-slate-200 dark:border-[#111014] bg-white dark:bg-[#1c1b22]
+           hover:border-slate-300 dark:hover:border-slate-700"
         />
         
         {/* <Input
@@ -85,11 +86,12 @@ export function DataTable<TData, TValue>({
           className="max-w-sm"
         /> */}
       </div>
-      <div className="rounded-md border dark:border-gray-600">
+      <div className="rounded-md
+      bg-white dark:bg-[#1C1B22]">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id} className=" dark:border-b-gray-600">
+              <TableRow key={headerGroup.id} className="border-b-slate-200 dark:border-b-gray-800">
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id}>
@@ -111,7 +113,8 @@ export function DataTable<TData, TValue>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  className="cursor-pointer hover:bg-slate-300 dark:hover:bg-slate-700 dark:border-b-gray-600"
+                  className="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700
+                  border-b-slate-200 dark:border-b-gray-800"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
@@ -139,6 +142,7 @@ export function DataTable<TData, TValue>({
           >
             Previous
           </Button>
+          <span className="text-sm">{Number(pagination.pageIndex + 1)}/{table.getPageCount()}</span>
           <Button
             variant="outline"
             size="sm"
