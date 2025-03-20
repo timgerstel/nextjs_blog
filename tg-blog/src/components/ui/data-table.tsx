@@ -25,6 +25,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useState } from "react"
 
+import { ArrowBigRight, ArrowBigLeft } from "lucide-react"
+
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -41,7 +43,7 @@ export function DataTable<TData, TValue>({
   const [globalFilter, setGlobalFilter] = useState<any>([]);
   const [pagination, setPagination] = useState({
     pageIndex: 0, //initial page index
-    pageSize: 20, //default page size
+    pageSize: 15, //default page size
   });
 
   const table = useReactTable({
@@ -66,26 +68,47 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="w-full p-2.5">
-      <div className="flex items-center py-4">
-      <Input
-          placeholder="Search posts..."
-          value={globalFilter ?? ""}
-          onChange={(event) =>
-            table.setGlobalFilter(String(event.target.value))
-          }
-          className="max-w-sm border-slate-200 dark:border-[#111014] bg-white dark:bg-[#1c1b22]
-           hover:border-slate-300 dark:hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-slate-300 dark:focus-visible:ring-slate-700"
-        />
-        
-        {/* <Input
-          placeholder="Filter posts..."
-          value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("title")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        /> */}
-      </div>
+      <div className="flex flex-row justify-between">
+        <div className="flex items-center py-4">
+        <Input
+            placeholder="Search posts..."
+            value={globalFilter ?? ""}
+            onChange={(event) =>
+              table.setGlobalFilter(String(event.target.value))
+            }
+            className="max-w-sm border-slate-200 dark:border-[#111014] bg-white dark:bg-[#1c1b22]
+            hover:border-slate-300 dark:hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-slate-300 dark:focus-visible:ring-slate-700 w-40 sm:w-96"
+          />
+          
+          {/* <Input
+            placeholder="Filter posts..."
+            value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
+            onChange={(event) =>
+              table.getColumn("title")?.setFilterValue(event.target.value)
+            }
+            className="max-w-sm"
+          /> */}
+        </div>
+        <div className="flex items-center justify-end space-x-2 py-4">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => table.previousPage()}
+              disabled={!table.getCanPreviousPage()}
+            >
+              <ArrowBigLeft />
+            </Button>
+            <span className="text-sm">{Number(pagination.pageIndex + 1)}/{table.getPageCount()}</span>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => table.nextPage()}
+              disabled={!table.getCanNextPage()}
+            >
+              <ArrowBigRight />
+            </Button>
+          </div>
+        </div>
       <div className="rounded-md
       bg-white dark:bg-[#1C1B22]">
         <Table>
@@ -133,25 +156,6 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-end space-x-2 py-4">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            Previous
-          </Button>
-          <span className="text-sm">{Number(pagination.pageIndex + 1)}/{table.getPageCount()}</span>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            Next
-          </Button>
-        </div>
     </div>
   )
 }
