@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function MenuBar(){
   
 
-  return (<div className="w-full h-[50px] border-b border-dashed border-[rgba(0,132,255,0.1)] sticky top-0 z-50">
+  return (<div className="w-full h-[50px] border-b border-dashed border-[rgba(0,132,255,0.1)] sticky top-0 z-50 bg-slate-100 dark:bg-[#17161b]">
     <div className="flex items-center gap-2 md:gap-3
       whitespace-nowrap
       h-full
